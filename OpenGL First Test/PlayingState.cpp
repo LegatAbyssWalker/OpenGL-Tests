@@ -94,8 +94,7 @@ void PlayingState::createMesh() {
 		4, 6, 7,
 		4, 5, 7
 	};
-
-
+	
 	std::vector<GLfloat> vertices{
 	//   X   Y   Z  U  V  
 		-1, -1,  1, 0, 0, //0 
