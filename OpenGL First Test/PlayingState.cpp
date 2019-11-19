@@ -107,7 +107,6 @@ void PlayingState::createMesh() {
 		 1,  1, -1, 1, 1  //7
 	};
 
-
 	for (GLsizei x = 0; x < 1; x++) {
 		meshVector.emplace_back(new Mesh());
 		meshVector[x]->createMesh(vertices, indices);
