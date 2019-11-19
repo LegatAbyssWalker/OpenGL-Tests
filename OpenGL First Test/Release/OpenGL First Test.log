@@ -1,0 +1,34 @@
+﻿  Camera.cpp
+  Game.cpp
+C:\Users\david\OneDrive\Desktop\OpenGL First Test\GLWindow.h(20,37): warning C4244: 'return': conversion from 'GLint' to 'GLfloat', possible loss of data
+  GLWindow.cpp
+C:\Users\david\OneDrive\Desktop\OpenGL First Test\GLWindow.h(21,38): warning C4244: 'return': conversion from 'GLint' to 'GLfloat', possible loss of data
+C:\Users\david\OneDrive\Desktop\OpenGL First Test\GLWindow.h(20,37): warning C4244: 'return': conversion from 'GLint' to 'GLfloat', possible loss of data
+C:\Users\david\OneDrive\Desktop\OpenGL First Test\GLWindow.h(21,38): warning C4244: 'return': conversion from 'GLint' to 'GLfloat', possible loss of data
+C:\Users\david\OneDrive\Desktop\OpenGL First Test\GLWindow.cpp(104,20): warning C4244: '=': conversion from 'GLdouble' to 'GLfloat', possible loss of data
+C:\Users\david\OneDrive\Desktop\OpenGL First Test\GLWindow.cpp(105,20): warning C4244: '=': conversion from 'GLdouble' to 'GLfloat', possible loss of data
+C:\Users\david\OneDrive\Desktop\OpenGL First Test\GLWindow.cpp(110,43): warning C4244: '+=': conversion from 'GLdouble' to 'GLfloat', possible loss of data
+C:\Users\david\OneDrive\Desktop\OpenGL First Test\GLWindow.cpp(111,43): warning C4244: '+=': conversion from 'GLdouble' to 'GLfloat', possible loss of data
+C:\Users\david\OneDrive\Desktop\OpenGL First Test\GLWindow.cpp(114,19): warning C4244: '=': conversion from 'GLdouble' to 'GLfloat', possible loss of data
+  Main.cpp
+C:\Users\david\OneDrive\Desktop\OpenGL First Test\GLWindow.cpp(115,19): warning C4244: '=': conversion from 'GLdouble' to 'GLfloat', possible loss of data
+C:\Users\david\OneDrive\Desktop\OpenGL First Test\GLWindow.h(20,37): warning C4244: 'return': conversion from 'GLint' to 'GLfloat', possible loss of data
+  Mesh.cpp
+  PlayingState.cpp
+C:\Users\david\OneDrive\Desktop\OpenGL First Test\GLWindow.h(21,38): warning C4244: 'return': conversion from 'GLint' to 'GLfloat', possible loss of data
+C:\Users\david\OneDrive\Desktop\OpenGL First Test\GLWindow.h(20,37): warning C4244: 'return': conversion from 'GLint' to 'GLfloat', possible loss of data
+C:\Users\david\OneDrive\Desktop\OpenGL First Test\GLWindow.h(21,38): warning C4244: 'return': conversion from 'GLint' to 'GLfloat', possible loss of data
+C:\Users\david\OneDrive\Desktop\OpenGL First Test\PlayingState.cpp(121,23): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+  Shader.cpp
+  State.cpp
+C:\Users\david\OneDrive\Desktop\OpenGL First Test\PlayingState.cpp(140,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\david\OneDrive\Desktop\OpenGL First Test\GLWindow.h(20,37): warning C4244: 'return': conversion from 'GLint' to 'GLfloat', possible loss of data
+  StateMachine.cpp
+C:\Users\david\OneDrive\Desktop\OpenGL First Test\GLWindow.h(21,38): warning C4244: 'return': conversion from 'GLint' to 'GLfloat', possible loss of data
+C:\Users\david\OneDrive\Desktop\OpenGL First Test\GLWindow.h(20,37): warning C4244: 'return': conversion from 'GLint' to 'GLfloat', possible loss of data
+C:\Users\david\OneDrive\Desktop\OpenGL First Test\GLWindow.h(21,38): warning C4244: 'return': conversion from 'GLint' to 'GLfloat', possible loss of data
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 577 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  OpenGL First Test.vcxproj -> C:\Users\david\OneDrive\Desktop\OpenGL First Test\Release\OpenGL First Test.exe
