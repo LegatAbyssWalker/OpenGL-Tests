@@ -10,11 +10,14 @@ class Mesh {
 		Mesh();
 		~Mesh();
 
+		void createMesh(const std::vector<GLfloat>& vertices);
 		void createMesh(const std::vector<GLfloat>& vertices, const std::vector<GLuint>& indices);
 		void renderMesh();
 		void clearMesh();
 
 	private:
+		std::vector<GLfloat> vertices;
+
 		GLuint VAO, VBO, IBO;
 		GLsizei indexCount;
 };

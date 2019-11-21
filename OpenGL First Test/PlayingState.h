@@ -19,6 +19,8 @@ class StateMachine;
 #include "MoreInfo.h"
 #include "Texture.h"
 
+#include "CubeGenerator.h"
+
 class PlayingState : public State {
 	public:
 		PlayingState(StateMachine& machine, GLWindow& glWindow, bool replace = true);
@@ -31,6 +33,8 @@ class PlayingState : public State {
 		void render();
 
 	private:
+		CubeGenerator cube;
+
 		//Variables/Booleans
 		GLuint screenWidth = SCREEN_WIDTH;
 		GLuint screenHeight = SCREEN_HEIGHT;

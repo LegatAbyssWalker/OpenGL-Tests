@@ -12,7 +12,7 @@
 class GLWindow {
 	public:
 		GLWindow() = default;
-		GLWindow(GLuint screenWidth, GLuint screenHeight, const char* windowTitle);
+		GLWindow(const GLuint screenWidth, const GLuint screenHeight, const char* windowTitle);
 		~GLWindow();
 
 		void initWindow();

@@ -1,9 +1,9 @@
 #include "GLWindow.h"
 
 
-GLWindow::GLWindow(GLuint screenWidth, GLuint screenHeight, const char* windowTitle) 
+GLWindow::GLWindow(const GLuint screenWidth, const GLuint screenHeight, const char* windowTitle)
 	: screenWidth(screenWidth), screenHeight(screenHeight), windowTitle(windowTitle) {
-
+	
 	for (std::size_t x = 0; x < 1024; x++) { keys[x] = 0; }
 
 	//VSync
