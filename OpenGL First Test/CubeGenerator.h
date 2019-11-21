@@ -16,7 +16,7 @@ class CubeGenerator {
 		CubeGenerator(static const char* vShader, static const char* fShader);
 		
 		void setTexture(const Texture& texture);
-		void setPosition(glm::vec3 position);
+		void setPosition(glm::vec3 position = glm::vec3(0.f, 0.f, 0.f));
 		void render(Camera& camera, const glm::mat4& projection);
 
 	private:

@@ -116,6 +116,9 @@ void PlayingState::update() {
 
 
 	/*-------------------------------------------------------------------------------------------------------------------*/
+	//Cube 
+	cube.setTexture(texture[0]);
+	cube.setPosition(glm::vec3(0.f, 0.f, 0.f));
 }
 
 void PlayingState::render() {
@@ -123,7 +126,6 @@ void PlayingState::render() {
 	glClearColor(0.f, 0.f, 0.f, 1.f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	cube.setTexture(texture[0]);
 	cube.render(camera, projection);
 
 	glUseProgram(0);
