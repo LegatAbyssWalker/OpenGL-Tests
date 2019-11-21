@@ -1,6 +1,6 @@
 #include "CubeGenerator.h"
 
-CubeGenerator::CubeGenerator(static const char* vShader, static const char* fShader) {
+CubeGenerator::CubeGenerator(const char* vShader, const char* fShader) {
 	std::vector<GLfloat> vertices{
 		//   X   Y   Z   U     V  
 		//1

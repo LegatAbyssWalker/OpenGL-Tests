@@ -3,10 +3,5 @@ C:\Users\david\OneDrive\Desktop\OpenGL First Test\GLWindow.h(20,37): warning C42
 C:\Users\david\OneDrive\Desktop\OpenGL First Test\GLWindow.h(21,38): warning C4244: 'return': conversion from 'GLint' to 'GLfloat', possible loss of data
 C:\Users\david\OneDrive\Desktop\OpenGL First Test\CubeGenerator.h(16,72): warning C4042: 'vShader': has bad storage class
 C:\Users\david\OneDrive\Desktop\OpenGL First Test\CubeGenerator.h(16,72): warning C4042: 'fShader': has bad storage class
-C:\Users\david\OneDrive\Desktop\OpenGL First Test\PlayingState.cpp(86,2): warning C4305: 'initializing': truncation from 'double' to '_Ty'
-C:\Users\david\OneDrive\Desktop\OpenGL First Test\PlayingState.cpp(86,2): warning C4305:         with
-C:\Users\david\OneDrive\Desktop\OpenGL First Test\PlayingState.cpp(86,2): warning C4305:         [
-C:\Users\david\OneDrive\Desktop\OpenGL First Test\PlayingState.cpp(86,2): warning C4305:             _Ty=GLfloat
-C:\Users\david\OneDrive\Desktop\OpenGL First Test\PlayingState.cpp(86,2): warning C4305:         ]
-C:\Users\david\OneDrive\Desktop\OpenGL First Test\PlayingState.cpp(110,23): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\david\OneDrive\Desktop\OpenGL First Test\PlayingState.cpp(39,23): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
   OpenGL First Test.vcxproj -> C:\Users\david\OneDrive\Desktop\OpenGL First Test\Debug\OpenGL First Test.exe

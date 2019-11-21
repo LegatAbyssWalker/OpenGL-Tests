@@ -25,9 +25,6 @@ class PlayingState : public State {
 	public:
 		PlayingState(StateMachine& machine, GLWindow& glWindow, bool replace = true);
 
-		void createMesh();
-		void createShaders();
-
 		void updateEvents();
 		void update();
 		void render();

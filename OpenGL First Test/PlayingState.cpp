@@ -12,11 +12,6 @@ const char* PlayingState::dirtTexturePath  = "res/images/dirt.png";  //Dirt text
 PlayingState::PlayingState(StateMachine& machine, GLWindow& glWindow, bool replace)
 	: State{ machine, glWindow, replace } {
 
-
-	//Objects/Shaders
-	createMesh();
-	createShaders();
-
 	//Camera
 	camera = Camera(glm::vec3(0.f, 0.f, 0.f), glm::vec3(0.f, 1.f, 0.f), -90.f, 0.f, 2.5f, 0.3f);
 
@@ -33,72 +28,6 @@ PlayingState::PlayingState(StateMachine& machine, GLWindow& glWindow, bool repla
 	cube = CubeGenerator(vShader, fShader);
 }
 
-void PlayingState::createMesh() {
-	std::vector<GLfloat> vertices{
-		//   X   Y   Z   U     V  
-		//1
-			-1, -1,  1, 0.25, 0.34,
-			-1, -1, -1, 0.25, 0.66, 
-			-1,  1,  1, 0.00, 0.34,
-			-1,  1,  1, 0.00, 0.34,
-			-1,  1, -1, 0.00, 0.66, 
-			-1, -1, -1, 0.25, 0.66,
-
-		//2
-			-1, -1, -1, 0.25, 0.66, 
-			-1, -1,  1, 0.25, 0.34,
-			 1, -1,  1, 0.50, 0.34,
-			 1, -1,  1, 0.50, 0.34,
-			 1, -1, -1, 0.50, 0.66,
-			-1, -1, -1, 0.25, 0.66,
-
-		//3
-			-1,  1, -1, 0.25, 1.00,
-			-1, -1, -1, 0.25, 0.66,
-			 1, -1, -1, 0.50, 0.66,
-			 1, -1, -1, 0.50, 0.66,
-			 1,  1, -1, 0.50, 1.00,
-			-1,  1, -1, 0.25, 1.00,
-
-		//4
-			-1,  1,  1, 0.25, 0.00,
-			-1, -1,  1, 0.25, 0.34,
-			 1, -1,  1, 0.50, 0.34,
-			 1, -1,  1, 0.50, 0.34,
-			 1,  1,  1, 0.50, 0.00,
-			-1,  1,  1, 0.25, 0.00,
-
-		//5
-			 1, -1,  1, 0.50, 0.34,
-			 1, -1, -1, 0.50, 0.66, 
-			 1,  1,  1, 0.75, 0.34,
-			 1,  1,  1, 0.75, 0.34,
-			 1,  1, -1, 0.75, 0.66,
-			 1, -1, -1, 0.50, 0.66,
-
-		//6
-			-1,  1, -1, 1.00, 0.66,
-			-1,  1,  1, 1.00, 0.34,
-			 1,  1,  1, 0.75, 0.34,
-			 1,  1,  1, 0.75, 0.34,
-			 1,  1, -1, 0.75, 0.66,
-			-1,  1, -1, 1.00, 0.66
-	};
-
-
-	for (GLsizei x = 0; x < 8; x++) {
-		meshVector.push_back(new Mesh());
-		meshVector[x]->createMesh(vertices);
-	}
-}
-
-void PlayingState::createShaders() {
-	for (GLsizei x = 0; x < 1; x++) {
-		shaderVector.push_back(new Shader());
-		shaderVector[x]->createFromFiles(vShader, fShader);
-	}
-}
-
 void PlayingState::updateEvents() {
 	//Get + Handle user input events
 	glfwPollEvents();
@@ -113,7 +42,6 @@ void PlayingState::update() {
 
 	camera.processKeyboard(glWindow.getKeys(), deltaTime);
 	camera.processMouseMovement(glWindow.getXChange(), glWindow.getYChange());
-
 
 	/*-------------------------------------------------------------------------------------------------------------------*/
 	//Cube 
