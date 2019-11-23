@@ -1,7 +1,2 @@
-﻿  PlayingState.cpp
-C:\Users\david\OneDrive\Desktop\OpenGL First Test\GLWindow.h(20,37): warning C4244: 'return': conversion from 'GLint' to 'GLfloat', possible loss of data
-C:\Users\david\OneDrive\Desktop\OpenGL First Test\GLWindow.h(21,38): warning C4244: 'return': conversion from 'GLint' to 'GLfloat', possible loss of data
-C:\Users\david\OneDrive\Desktop\OpenGL First Test\CubeGenerator.h(16,72): warning C4042: 'vShader': has bad storage class
-C:\Users\david\OneDrive\Desktop\OpenGL First Test\CubeGenerator.h(16,72): warning C4042: 'fShader': has bad storage class
-C:\Users\david\OneDrive\Desktop\OpenGL First Test\PlayingState.cpp(39,23): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+﻿  Shader.cpp
   OpenGL First Test.vcxproj -> C:\Users\david\OneDrive\Desktop\OpenGL First Test\Debug\OpenGL First Test.exe

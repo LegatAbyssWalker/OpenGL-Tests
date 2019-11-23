@@ -34,6 +34,9 @@
     <Filter Include="Source Files\Mesh">
       <UniqueIdentifier>{605dd9b5-c92a-49de-a8c2-f4493228ba75}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Generators">
+      <UniqueIdentifier>{d40bebcf-36ff-4495-aee0-12c8bccf26ca}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -67,7 +70,7 @@
       <Filter>Source Files\Mesh</Filter>
     </ClCompile>
     <ClCompile Include="CubeGenerator.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Generators</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -102,7 +105,7 @@
       <Filter>Source Files\Mesh</Filter>
     </ClInclude>
     <ClInclude Include="CubeGenerator.h">
-      <Filter>Header Files</Filter>
+      <Filter>Generators</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

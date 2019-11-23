@@ -61,7 +61,7 @@ void Shader::clearShader() {
 void Shader::compileShader(const char* vertexCode, const char* fragmentCode) {
 	shaderID = glCreateProgram();
 
-	if (shaderID != GL_TRUE) {
+	if (shaderID == 0) {
 		std::cout << "Shader program error!\n";
 	}
 
@@ -85,9 +85,13 @@ void Shader::compileShader(const char* vertexCode, const char* fragmentCode) {
 
 
 	//Gets shader ID and then binds it with the variable inside shader
-	uniformModel = glGetUniformLocation(shaderID, "model");
+	uniformModel      = glGetUniformLocation(shaderID, "model");
 	uniformProjection = glGetUniformLocation(shaderID, "projection");
-	uniformView = glGetUniformLocation(shaderID, "view");
+	uniformView       = glGetUniformLocation(shaderID, "view");
+
+	if (uniformModel == -1)      { std::cout << "Shader model error!\n"; }
+	if (uniformProjection == -1) { std::cout << "Shader projection error!\n"; }
+	if (uniformView == -1)       { std::cout << "Shader view error!\n"; }
 }
 
 void Shader::addShader(GLuint theProgram, const char* shaderCode, GLenum shaderType) {

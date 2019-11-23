@@ -64,6 +64,11 @@ void CubeGenerator::setPosition(glm::vec3 position) {
 	this->position = position;
 }
 
+void CubeGenerator::update(GLWindow& glWindow, Camera& camera, GLfloat deltaTime) {
+	camera.processKeyboard(glWindow.getKeys(), deltaTime);
+	camera.processMouseMovement(glWindow.getXChange(), glWindow.getYChange());
+}
+
 void CubeGenerator::render(Camera& camera, const glm::mat4& projection) {
 	shader.useShader();
 	uniformModel = shader.getModelLocation();
@@ -73,6 +78,7 @@ void CubeGenerator::render(Camera& camera, const glm::mat4& projection) {
 	glm::mat4 model(1.f);
 	model = glm::translate(model, position);
 	model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
+
 	//Camera matrix
 	glm::mat4 view = camera.calculateViewMatrix();
 
@@ -85,4 +91,8 @@ void CubeGenerator::render(Camera& camera, const glm::mat4& projection) {
 
 	//Rendering
 	mesh.renderMesh();
+}
+
+glm::vec3 CubeGenerator::getPosition() {
+	return glm::vec3(position);
 }

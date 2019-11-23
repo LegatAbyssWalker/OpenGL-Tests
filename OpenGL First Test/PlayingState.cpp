@@ -26,6 +26,8 @@ PlayingState::PlayingState(StateMachine& machine, GLWindow& glWindow, bool repla
 
 	//Cube
 	cube = CubeGenerator(vShader, fShader);
+	cube.setTexture(texture[0]);
+	cube.setPosition(glm::vec3(0.f, 0.f, 0.f));
 }
 
 void PlayingState::updateEvents() {
@@ -39,19 +41,15 @@ void PlayingState::update() {
 	GLfloat currentFrame = glfwGetTime();
 	deltaTime = currentFrame - lastFrame;
 	lastFrame = currentFrame;
-
-	camera.processKeyboard(glWindow.getKeys(), deltaTime);
-	camera.processMouseMovement(glWindow.getXChange(), glWindow.getYChange());
-
+	
 	/*-------------------------------------------------------------------------------------------------------------------*/
 	//Cube 
-	cube.setTexture(texture[0]);
-	cube.setPosition(glm::vec3(0.f, 0.f, 0.f));
+	cube.update(glWindow, camera, deltaTime);
 }
 
 void PlayingState::render() {
 	//Clear window
-	glClearColor(0.f, 0.f, 0.f, 1.f);
+	glClearColor(255.f, 255.f, 255.5f, 1.f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	cube.render(camera, projection);
