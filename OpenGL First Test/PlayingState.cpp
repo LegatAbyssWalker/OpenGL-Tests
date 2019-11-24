@@ -1,28 +1,17 @@
 #include "PlayingState.h"
 
-//Shader files
-const char* PlayingState::vShader = "Shaders/shader.vert"; //Vertex shader
-const char* PlayingState::fShader = "Shaders/shader.frag"; //Fragment shader
-
 //Texture files
-const char* PlayingState::grassTexturePath = "res/images/grass.png"; //Grass texture
-const char* PlayingState::dirtTexturePath  = "res/images/dirt.png";  //Dirt texture
-
+static const char* grassTexturePath = "res/images/grass.png"; //Grass texture
+static const char* dirtTexturePath  = "res/images/dirt.png";  //Dirt texture
 
 PlayingState::PlayingState(StateMachine& machine, GLWindow& glWindow, bool replace)
-	: State{ machine, glWindow, replace }, cube(vShader, fShader) {
+	: State{ machine, glWindow, replace } {
 
 	//Camera
 	camera = Camera(glm::vec3(0.f, 0.f, 0.f), glm::vec3(0.f, 1.f, 0.f), -90.f, 0.f, 2.5f, 0.3f);
 
-	//Textures
-	texture[0] = Texture(grassTexturePath);
-	texture[0].loadTexture();
-	texture[1] = Texture(dirtTexturePath);
-	texture[1].loadTexture();
-
 	//Cube
-	cube.setTexture(texture[0]);
+	cube.setTexture(Texture::get(grassTexturePath));
 	cube.setPosition(glm::vec3(0.f, 0.f, 0.f));
 }
 

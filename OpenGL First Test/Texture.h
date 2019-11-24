@@ -5,23 +5,30 @@
 #include "stb_image.h"
 
 #include <iostream>
+#include <string>
+#include <memory>
+#include <unordered_map>
 
 class Texture {
+		static std::unordered_map<std::string, std::shared_ptr<Texture>> cache;
+
 	public:
-		Texture() = default;
-		Texture(const char* fileLocation);
+		static std::shared_ptr<Texture> get(std::string name);
+
+		Texture() : textureID(0) {}
+		Texture(const std::string& fileLocation);
 		~Texture();
 
-		void loadTexture();
+		Texture(const Texture& tex) = delete;
+		Texture& operator=(const Texture& tex) = delete;
+
+		Texture(Texture&& tex) noexcept;
+		Texture& operator=(Texture&& tex) noexcept;
+
 		void useTexture();
-		void clearTexture();
-
-
+		static void unbindAll();
 	private:
 		GLuint textureID;
-		int width, height, bitDepth;
-
-		const char* fileLocation;
 };
 
 #endif

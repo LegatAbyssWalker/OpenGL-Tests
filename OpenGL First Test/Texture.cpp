@@ -1,19 +1,14 @@
 #include "Texture.h"
+#include <stdexcept>
 
-Texture::Texture(const char* fileLocation) : fileLocation(fileLocation) {
-	textureID = 0;
-	width = 0;
-	height = 0;
-	bitDepth = 0;
-}
+std::unordered_map<std::string, std::shared_ptr<Texture>> Texture::cache;
 
-Texture::~Texture() {
-	clearTexture();
-}
-
-void Texture::loadTexture() {
-	unsigned char* textureData = stbi_load(fileLocation, &width, &height, &bitDepth, 0);
-	if (textureData == 0) { std::cout << "Failed to find: " << fileLocation; }
+Texture::Texture(const std::string& fileLocation) : textureID(0) {
+	int width, height, bitDepth;
+	unsigned char* textureData = stbi_load(fileLocation.c_str(), &width, &height, &bitDepth, 0);
+	if (textureData == 0) {
+		throw std::runtime_error("Failed to find " + fileLocation);
+	}
 
 	glGenTextures(1, &textureID);
 	glBindTexture(GL_TEXTURE_2D, textureID);
@@ -30,18 +25,38 @@ void Texture::loadTexture() {
 	stbi_image_free(textureData);
 }
 
+std::shared_ptr<Texture> Texture::get(std::string name) {
+	auto it = cache.find(name);
+
+	if (it == cache.end()) {
+		it = cache.emplace(name, std::make_shared<Texture>(name)).first;
+	}
+
+	return it->second;
+}
+
+Texture::Texture(Texture&& tex) noexcept : textureID(tex.textureID) {
+	tex.textureID = 0;
+}
+
+Texture& Texture::operator=(Texture&& tex) noexcept {
+	using std::swap;
+	swap(textureID, tex.textureID);
+	return *this;
+}
+
 void Texture::useTexture() {
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, textureID);
 }
 
-void Texture::clearTexture() {
-	glDeleteTextures(1, &textureID);
-
-	textureID = 0;
-	width = 0;
-	height = 0;
-	bitDepth = 0;
-	fileLocation = "";
+void Texture::unbindAll() {
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, 0);
 }
+
+Texture::~Texture() {
+	glDeleteTextures(1, &textureID);
+}
+
 

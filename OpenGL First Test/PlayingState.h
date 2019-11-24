@@ -36,15 +36,6 @@ class PlayingState : public State {
 		GLuint screenWidth = SCREEN_WIDTH;
 		GLuint screenHeight = SCREEN_HEIGHT;
 
-		//Vectors
-		std::vector<Mesh*> meshVector;
-		std::vector<Shader*> shaderVector;
-
-		//Arrays
-		std::array<Texture, 2> texture;
-		static const char* grassTexturePath; //Grass texture
-		static const char* dirtTexturePath;  //Dirt texture
-
 		//Camera info
 		Camera camera;
 		GLfloat lastX = screenWidth / 2.f;

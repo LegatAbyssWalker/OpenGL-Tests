@@ -10,13 +10,30 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include <map>
+#include <array>
 
-class Shader {
+class Program {
+		using Key = std::array<std::string, 3>;
+		static std::map<Key, std::shared_ptr<Program>> cache;
+
 	public:
-		Shader() = default;
-		Shader(const char* vertexPath, const char* fragmentPath, const char* geometryPath = nullptr);
+		static std::shared_ptr<Program> get(const std::string& vertexPath, const std::string& fragmentPath, const std::string& geometryPath);
+		static std::shared_ptr<Program> get(const std::string& vertexPath, const std::string& fragmentPath) {
+			return get(vertexPath, fragmentPath, "");
+		}
 
-		void useShader();
+		Program() = default;
+		Program(const std::string& vertexPath, const std::string& fragmentPath, const std::string& geometryPath);
+		~Program();
+
+		Program(const Program&) = delete;
+		Program& operator=(const Program&) = delete;
+
+		Program(Program&& sh) noexcept;
+		Program& operator=(Program&& sh) noexcept;
+
+		void useProgram();
 
 		void setBool(const std::string& name, bool value) const;
 		void setInt(const std::string& name, int value) const;
@@ -36,7 +53,7 @@ class Shader {
 		void setMat4(const std::string& name, const glm::mat4& mat) const;
 
 	private:
-		GLuint shaderID, uniformModel, uniformProjection, uniformView;
+		GLuint programID;
 
 		void checkCompileErrors(GLuint shaderType, std::string type);
 };
