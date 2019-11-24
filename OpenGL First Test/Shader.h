@@ -14,7 +14,6 @@
 class Shader {
 	public:
 		Shader() = default;
-		Shader(Shader&& shader);
 		Shader(const char* vertexPath, const char* fragmentPath, const char* geometryPath = nullptr);
 
 		void useShader();

@@ -39,7 +39,6 @@ class PlayingState : public State {
 		//Vectors
 		std::vector<Mesh*> meshVector;
 		std::vector<Shader*> shaderVector;
-		std::vector<glm::vec3> cubePositionVector;
 
 		//Arrays
 		std::array<Texture, 2> texture;

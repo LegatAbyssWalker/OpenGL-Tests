@@ -1,9 +1,6 @@
 #include "Shader.h"
 
 
-Shader::Shader(Shader&& shader) {
-	//?
-}
 
 Shader::Shader(const char* vertexPath, const char* fragmentPath, const char* geometryPath) {
 	/*-------------------------------------------------------------------------------------------------------------------*/

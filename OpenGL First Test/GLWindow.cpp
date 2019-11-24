@@ -63,7 +63,6 @@ void GLWindow::initWindow() {
 
 
 	glEnable(GL_DEPTH_TEST);
-	glDisable(GL_CULL_FACE);
 
 	//Setup viewport size
 	glViewport(0, 0, bufferWidth, bufferHeight);

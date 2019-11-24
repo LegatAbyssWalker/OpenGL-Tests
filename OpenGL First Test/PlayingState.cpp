@@ -10,10 +10,10 @@ const char* PlayingState::dirtTexturePath  = "res/images/dirt.png";  //Dirt text
 
 
 PlayingState::PlayingState(StateMachine& machine, GLWindow& glWindow, bool replace)
-	: State{ machine, glWindow, replace } {
+	: State{ machine, glWindow, replace }, cube(vShader, fShader) {
 
 	//Camera
-	camera = Camera(glm::vec3(2.f, 0.f, 0.f), glm::vec3(0.f, 1.f, 0.f), -90.f, 0.f, 2.5f, 0.3f);
+	camera = Camera(glm::vec3(0.f, 0.f, 0.f), glm::vec3(0.f, 1.f, 0.f), -90.f, 0.f, 2.5f, 0.3f);
 
 	//Textures
 	texture[0] = Texture(grassTexturePath);
@@ -22,7 +22,6 @@ PlayingState::PlayingState(StateMachine& machine, GLWindow& glWindow, bool repla
 	texture[1].loadTexture();
 
 	//Cube
-	cube = CubeGenerator(vShader, fShader);
 	cube.setTexture(texture[0]);
 	cube.setPosition(glm::vec3(0.f, 0.f, 0.f));
 }
@@ -46,7 +45,7 @@ void PlayingState::update() {
 
 void PlayingState::render() {
 	//Clear window
-	glClearColor(255.f, 255.f, 255.5f, 1.f);
+	glClearColor(0.f, 0.f, 0.f, 1.f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	cube.render(glWindow, camera);

@@ -4,7 +4,8 @@
 const char* CubeGenerator::vShader = "Shaders/shader.vert"; //Vertex shader
 const char* CubeGenerator::fShader = "Shaders/shader.frag"; //Fragment shader
 
-CubeGenerator::CubeGenerator(const char* vShader, const char* fShader) {
+CubeGenerator::CubeGenerator(const char* vShader, const char* fShader) 
+	: shader(vShader, fShader), mesh() {
 	std::vector<GLfloat> vertices{
 		//   X   Y   Z   U     V  
 		//1
@@ -55,8 +56,6 @@ CubeGenerator::CubeGenerator(const char* vShader, const char* fShader) {
 			 1,  1, -1, 0.75, 0.66,
 			-1,  1, -1, 1.00, 0.66
 	};
-	mesh = Mesh();
-	shader = Shader(this->vShader, this->fShader);
 
 	mesh.createMesh(vertices);
 }
@@ -85,7 +84,7 @@ void CubeGenerator::render(GLWindow& glWindow, Camera& camera) {
 	glm::mat4 view = camera.calculateViewMatrix();
 
 	//Projection
-	glm::mat4 projection = projection = glm::perspective(glm::radians(45.f), (GLfloat)glWindow.getBufferWidth() / glWindow.getBufferHeight(), 0.1f, 100.f);
+	glm::mat4 projection = glm::perspective(glm::radians(45.f), (GLfloat)glWindow.getBufferWidth() / glWindow.getBufferHeight(), 0.1f, 100.f);
 
 	//Uniform
 	shader.setMat4("model", model);
