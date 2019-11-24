@@ -13,7 +13,7 @@ Texture::~Texture() {
 
 void Texture::loadTexture() {
 	unsigned char* textureData = stbi_load(fileLocation, &width, &height, &bitDepth, 0);
-	if (textureData == GL_FALSE) { std::cout << "Failed to fined: " << fileLocation; }
+	if (textureData == 0) { std::cout << "Failed to find: " << fileLocation; }
 
 	glGenTextures(1, &textureID);
 	glBindTexture(GL_TEXTURE_2D, textureID);
@@ -28,7 +28,6 @@ void Texture::loadTexture() {
 
 	glBindTexture(GL_TEXTURE_2D, 0);
 	stbi_image_free(textureData);
-
 }
 
 void Texture::useTexture() {

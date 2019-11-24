@@ -1,5 +1,9 @@
 #include "CubeGenerator.h"
 
+//Shader files
+const char* CubeGenerator::vShader = "Shaders/shader.vert"; //Vertex shader
+const char* CubeGenerator::fShader = "Shaders/shader.frag"; //Fragment shader
+
 CubeGenerator::CubeGenerator(const char* vShader, const char* fShader) {
 	std::vector<GLfloat> vertices{
 		//   X   Y   Z   U     V  
@@ -51,9 +55,10 @@ CubeGenerator::CubeGenerator(const char* vShader, const char* fShader) {
 			 1,  1, -1, 0.75, 0.66,
 			-1,  1, -1, 1.00, 0.66
 	};
+	mesh = Mesh();
+	shader = Shader(this->vShader, this->fShader);
 
 	mesh.createMesh(vertices);
-	shader.createFromFiles(vShader, fShader);
 }
 
 void CubeGenerator::setTexture(const Texture& texture) {
@@ -69,12 +74,9 @@ void CubeGenerator::update(GLWindow& glWindow, Camera& camera, GLfloat deltaTime
 	camera.processMouseMovement(glWindow.getXChange(), glWindow.getYChange());
 }
 
-void CubeGenerator::render(Camera& camera, const glm::mat4& projection) {
+void CubeGenerator::render(GLWindow& glWindow, Camera& camera) {
 	shader.useShader();
-	uniformModel = shader.getModelLocation();
-	uniformProjection = shader.getProjectionLocation();
-	uniformView = shader.getViewLocation();
-
+	 
 	glm::mat4 model(1.f);
 	model = glm::translate(model, position);
 	model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
@@ -82,10 +84,14 @@ void CubeGenerator::render(Camera& camera, const glm::mat4& projection) {
 	//Camera matrix
 	glm::mat4 view = camera.calculateViewMatrix();
 
+	//Projection
+	glm::mat4 projection = projection = glm::perspective(glm::radians(45.f), (GLfloat)glWindow.getBufferWidth() / glWindow.getBufferHeight(), 0.1f, 100.f);
+
 	//Uniform
-	glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-	glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
-	glUniformMatrix4fv(uniformView, 1, GL_FALSE, glm::value_ptr(view));
+	shader.setMat4("model", model);
+	shader.setMat4("view", view);
+	shader.setMat4("projection", projection);
+
 	//Textures assignment
 	texture.useTexture();
 

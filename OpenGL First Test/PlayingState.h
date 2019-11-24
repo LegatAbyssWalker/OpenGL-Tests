@@ -59,12 +59,6 @@ class PlayingState : public State {
 		//Shaders
 		static const char* vShader; //Vertex shader
 		static const char* fShader; //Fragment shader
-
-		//Uniform variables
-		GLuint uniformModel = 0, uniformProjection = 0, uniformView = 0;
-
-		//Matrices
-		glm::mat4 projection;
 };
 
 #endif

@@ -20,11 +20,15 @@ class CubeGenerator {
 		void setPosition(glm::vec3 position = glm::vec3(0.f, 0.f, 0.f));
 
 		void update(GLWindow& glWindow, Camera& camera, GLfloat deltaTime);
-		void render(Camera& camera, const glm::mat4& projection);
+		void render(GLWindow& glWindow, Camera& camera);
 
 		glm::vec3 getPosition();
 
 	private:
+		//Shaders
+		static const char* vShader; //Vertex shader
+		static const char* fShader; //Fragment shader
+
 		Mesh mesh;
 		Shader shader;
 		Texture texture;
@@ -32,9 +36,6 @@ class CubeGenerator {
 		glm::vec3 position; 
 
 		std::vector<GLuint> vertices;
-
-		//Uniform variables
-		GLuint uniformModel = 0, uniformProjection = 0, uniformView = 0;
 };
 
 #endif

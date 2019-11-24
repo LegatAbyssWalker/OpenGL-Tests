@@ -13,16 +13,13 @@ PlayingState::PlayingState(StateMachine& machine, GLWindow& glWindow, bool repla
 	: State{ machine, glWindow, replace } {
 
 	//Camera
-	camera = Camera(glm::vec3(0.f, 0.f, 0.f), glm::vec3(0.f, 1.f, 0.f), -90.f, 0.f, 2.5f, 0.3f);
+	camera = Camera(glm::vec3(2.f, 0.f, 0.f), glm::vec3(0.f, 1.f, 0.f), -90.f, 0.f, 2.5f, 0.3f);
 
 	//Textures
 	texture[0] = Texture(grassTexturePath);
 	texture[0].loadTexture();
 	texture[1] = Texture(dirtTexturePath);
 	texture[1].loadTexture();
-
-	//Projection
-	projection = glm::perspective(glm::radians(45.f), (GLfloat)glWindow.getBufferWidth() / glWindow.getBufferHeight(), 0.1f, 100.f);
 
 	//Cube
 	cube = CubeGenerator(vShader, fShader);
@@ -52,7 +49,7 @@ void PlayingState::render() {
 	glClearColor(255.f, 255.f, 255.5f, 1.f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	cube.render(camera, projection);
+	cube.render(glWindow, camera);
 
 	glUseProgram(0);
 
