@@ -10,12 +10,13 @@
 #include <unordered_map>
 
 class Texture {
+	private:
 		static std::unordered_map<std::string, std::shared_ptr<Texture>> cache;
 
 	public:
 		static std::shared_ptr<Texture> get(std::string name);
 
-		Texture() : textureID(0) {}
+		Texture() : textureID(0) { }
 		Texture(const std::string& fileLocation);
 		~Texture();
 
@@ -27,6 +28,7 @@ class Texture {
 
 		void useTexture();
 		static void unbindAll();
+
 	private:
 		GLuint textureID;
 };

@@ -4,9 +4,10 @@
 const char* vShader = "Shaders/shader.vert"; //Vertex program
 const char* fShader = "Shaders/shader.frag"; //Fragment program
 
-CubeGenerator::CubeGenerator() 
+CubeGenerator::CubeGenerator()
 	: mesh() {
-	std::vector<GLfloat> vertices{
+
+	std::vector<GLfloat> vertices {
 		//   X   Y   Z   U     V  
 		//1
 			-1, -1,  1, 0.25, 0.34,
@@ -76,7 +77,7 @@ void CubeGenerator::update(GLWindow& glWindow, Camera& camera, GLfloat deltaTime
 
 void CubeGenerator::render(GLWindow& glWindow, Camera& camera) {
 	program->useProgram();
-	 
+
 	glm::mat4 model(1.f);
 	model = glm::translate(model, position);
 	model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));

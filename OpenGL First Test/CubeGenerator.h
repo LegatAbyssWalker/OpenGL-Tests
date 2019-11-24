@@ -3,7 +3,7 @@
 
 #include "State.h"
 #include "Mesh.h"
-#include "Shader.h"
+#include "Program.h"
 #include "Texture.h"
 #include "Camera.h"
 #include "GLWindow.h"
@@ -14,7 +14,7 @@
 class CubeGenerator {
 	public:
 		CubeGenerator();
-		
+
 		void setTexture(std::shared_ptr<Texture> texture);
 		void setPosition(glm::vec3 position = glm::vec3(0.f, 0.f, 0.f));
 
@@ -28,7 +28,7 @@ class CubeGenerator {
 		std::shared_ptr<Program> program;
 		std::shared_ptr<Texture> texture;
 
-		glm::vec3 position; 
+		glm::vec3 position;
 
 		std::vector<GLuint> vertices;
 };

@@ -14,11 +14,10 @@ class StateMachine;
 
 #include "GLWindow.h"
 #include "Mesh.h"
-#include "Shader.h"
+#include "Program.h"
 #include "Camera.h"
 #include "MoreInfo.h"
 #include "Texture.h"
-
 #include "CubeGenerator.h"
 
 class PlayingState : public State {
@@ -30,7 +29,8 @@ class PlayingState : public State {
 		void render();
 
 	private:
-		CubeGenerator cube;
+		//Vectors
+		std::vector<CubeGenerator> cubeVector;
 
 		//Variables/Booleans
 		GLuint screenWidth = SCREEN_WIDTH;

@@ -1,11 +1,13 @@
 #include "Texture.h"
+
 #include <stdexcept>
 
 std::unordered_map<std::string, std::shared_ptr<Texture>> Texture::cache;
 
 Texture::Texture(const std::string& fileLocation) : textureID(0) {
-	int width, height, bitDepth;
+	GLint width, height, bitDepth;
 	unsigned char* textureData = stbi_load(fileLocation.c_str(), &width, &height, &bitDepth, 0);
+
 	if (textureData == 0) {
 		throw std::runtime_error("Failed to find " + fileLocation);
 	}
@@ -58,5 +60,3 @@ void Texture::unbindAll() {
 Texture::~Texture() {
 	glDeleteTextures(1, &textureID);
 }
-
-
