@@ -13,10 +13,9 @@
 
 class CubeGenerator {
 	public:
-		CubeGenerator() = default;
-		CubeGenerator(const char* vShader, const char* fShader);
+		CubeGenerator();
 		
-		void setTexture(const Texture& texture);
+		void setTexture(std::shared_ptr<Texture> texture);
 		void setPosition(glm::vec3 position = glm::vec3(0.f, 0.f, 0.f));
 
 		void update(GLWindow& glWindow, Camera& camera, GLfloat deltaTime);
@@ -25,13 +24,9 @@ class CubeGenerator {
 		glm::vec3 getPosition();
 
 	private:
-		//Shaders
-		static const char* vShader; //Vertex shader
-		static const char* fShader; //Fragment shader
-
 		Mesh mesh;
-		Shader shader;
-		Texture texture;
+		std::shared_ptr<Program> program;
+		std::shared_ptr<Texture> texture;
 
 		glm::vec3 position; 
 
