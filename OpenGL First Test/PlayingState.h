@@ -15,10 +15,11 @@ class StateMachine;
 #include "GLWindow.h"
 #include "Mesh.h"
 #include "Program.h"
-#include "Camera.h"
 #include "MoreInfo.h"
+#include "FileLocations.h"
 #include "Texture.h"
 #include "CubeGenerator.h"
+#include "Player.h"
 
 class PlayingState : public State {
 	public:
@@ -29,26 +30,14 @@ class PlayingState : public State {
 		void render();
 
 	private:
+		std::unique_ptr<Player> player = nullptr;
+
 		//Vectors
 		std::vector<CubeGenerator> cubeVector;
-
-		//Variables/Booleans
-		GLuint screenWidth = SCREEN_WIDTH;
-		GLuint screenHeight = SCREEN_HEIGHT;
-
-		//Camera info
-		Camera camera;
-		GLfloat lastX = screenWidth / 2.f;
-		GLfloat lastY = screenHeight / 2.f;
-		bool firstMouse = true;
 
 		//Timing
 		GLfloat deltaTime = 0.f;
 		GLfloat lastFrame;
-
-		//Shaders
-		static const char* vShader; //Vertex shader
-		static const char* fShader; //Fragment shader
 };
 
 #endif

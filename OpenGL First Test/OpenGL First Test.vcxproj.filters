@@ -37,6 +37,9 @@
     <Filter Include="Generators">
       <UniqueIdentifier>{d40bebcf-36ff-4495-aee0-12c8bccf26ca}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Entities">
+      <UniqueIdentifier>{ff506c44-721d-4718-9a97-54325c251a89}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -63,14 +66,17 @@
     <ClCompile Include="Texture.cpp">
       <Filter>Source Files\Textures</Filter>
     </ClCompile>
-    <ClCompile Include="Shader.cpp">
-      <Filter>Source Files\Shaders</Filter>
-    </ClCompile>
     <ClCompile Include="Mesh.cpp">
       <Filter>Source Files\Mesh</Filter>
     </ClCompile>
     <ClCompile Include="CubeGenerator.cpp">
       <Filter>Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="Program.cpp">
+      <Filter>Source Files\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files\Entities</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -98,14 +104,28 @@
     <ClInclude Include="Texture.h">
       <Filter>Source Files\Textures</Filter>
     </ClInclude>
-    <ClInclude Include="Shader.h">
-      <Filter>Source Files\Shaders</Filter>
-    </ClInclude>
     <ClInclude Include="Mesh.h">
       <Filter>Source Files\Mesh</Filter>
     </ClInclude>
     <ClInclude Include="CubeGenerator.h">
       <Filter>Generators</Filter>
     </ClInclude>
+    <ClInclude Include="Program.h">
+      <Filter>Source Files\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="FileLocations.h">
+      <Filter>Source Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Source Files\Entities</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders\shader.frag">
+      <Filter>Source Files\Shaders</Filter>
+    </None>
+    <None Include="Shaders\shader.vert">
+      <Filter>Source Files\Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

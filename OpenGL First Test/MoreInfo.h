@@ -2,12 +2,10 @@
 #define MOREINFO_H
 
 //General
-#define SCREEN_WIDTH 1280
 #define SCREEN_HEIGHT 900
+#define SCREEN_WIDTH SCREEN_HEIGHT * 16 / 9
 
-//Texture
-#define GRASS_TEXTURE_LOCATION "res/images/grass.png"
-#define DIRT_TEXTURE_LOCATION "res/images/dirt.png"
+
 
 /*--------------COLOR INFO-------------*/
 //www.rapidtables.com/web/color/RGB_Color.html

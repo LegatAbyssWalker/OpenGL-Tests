@@ -1,19 +1,16 @@
 #include "PlayingState.h"
 
-//Texture files
-static const char* grassTexturePath = "res/images/grass.png"; //Grass texture
-static const char* dirtTexturePath  = "res/images/dirt.png";  //Dirt texture
-
 PlayingState::PlayingState(StateMachine& machine, GLWindow& glWindow, bool replace)
 	: State{ machine, glWindow, replace } {
 
-	//Camera
-	camera = Camera(glm::vec3(0.f, 0.f, 0.f), glm::vec3(0.f, 1.f, 0.f), -90.f, 0.f, 2.5f, 0.3f);
+	//Player information
+	player = std::make_unique<Player>(glm::vec3(0, 0, 0));
+
 
 	//Cube
-	cubeVector.resize(10);
+	cubeVector.resize(20);
 	for (GLsizei x = 0; x < cubeVector.size(); x++) {
-		cubeVector[x].setTexture(Texture::get(grassTexturePath));
+		cubeVector[x].setTexture(Texture::get(GRASS_TEXTURE_LOCATION));
 		cubeVector[x].setPosition(glm::vec3(x, 0.f, 0.f));
 	}
 }
@@ -21,6 +18,8 @@ PlayingState::PlayingState(StateMachine& machine, GLWindow& glWindow, bool repla
 void PlayingState::updateEvents() {
 	//Get + Handle user input events
 	glfwPollEvents();
+
+	player->updateEvents(glWindow);
 }
 
 void PlayingState::update() {
@@ -30,17 +29,20 @@ void PlayingState::update() {
 	deltaTime = currentFrame - lastFrame;
 	lastFrame = currentFrame;
 
+
 	/*-------------------------------------------------------------------------------------------------------------------*/
-	//Cube 
-	for (auto& cube : cubeVector) { cube.update(glWindow, camera, deltaTime); }
+	//Player updates
+	player->update(deltaTime);
 }
 
 void PlayingState::render() {
 	//Clear window
-	glClearColor(0.f, 0.f, 0.f, 1.f);
+	glClearColor(0.5f, 1.f, 1.f, 1.f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	for (auto& cube : cubeVector) { cube.render(glWindow, camera); }
+	for (auto& cube : cubeVector) { cube.render(glWindow, player->getViewMatrix()); }
+
+	player->render(glWindow);
 
 	glUseProgram(0);
 

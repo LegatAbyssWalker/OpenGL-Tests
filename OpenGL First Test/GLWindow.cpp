@@ -33,7 +33,7 @@ void GLWindow::initWindow() {
 
 	//Creating window
 	window = glfwCreateWindow(screenWidth, screenHeight, windowTitle, nullptr, nullptr);
-	glfwSetWindowPos(window, 500, 100);
+	glfwSetWindowPos(window, 10, 50);
 
 	if (window == nullptr) {
 		std::cout << "GLFW window creation failed!\n";
