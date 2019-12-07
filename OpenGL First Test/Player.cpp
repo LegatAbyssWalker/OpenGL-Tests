@@ -44,7 +44,7 @@ void Player::render(GLWindow& glWindow) {
 
 	//Model matrix
 	glm::mat4 model(1.f);
-	model = glm::translate(model, glm::vec3(1.f, 1.f, 1.f));
+	model = glm::translate(model, camera.getPosition());
 	model = glm::scale(model, glm::vec3(0.05f, 0.05f, 0.05f));
 
 	//Uniforms

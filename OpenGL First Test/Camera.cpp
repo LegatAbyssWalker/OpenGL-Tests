@@ -45,10 +45,6 @@ void Camera::processMouseMovement(GLfloat xChange, GLfloat yChange) {
 	updateCameraVectors();
 }
 
-glm::mat4 Camera::calculateViewMatrix() {
-	return glm::lookAt(position, position + front, up);
-}
-
 void Camera::updateCameraVectors() {
 	glm::vec3 functionFront;
 
