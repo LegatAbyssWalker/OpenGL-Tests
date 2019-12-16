@@ -3,16 +3,20 @@
 
 /*-------------------------------------------------------------------------------------------------------------------*/
 //Shaders
-#define VERTEX_SHADER "Shaders/shader.vert" //Vertex shader
-#define FRAGMENT_SHADER "Shaders/shader.frag" //Fragment shader
+#define BASIC_VERTEX_SHADER "Shaders/basicShader.vert"
+#define BASIC_FRAGMENT_SHADER "Shaders/basicShader.frag"
 
 
 /*-------------------------------------------------------------------------------------------------------------------*/
 //Textures
+//GUI
+#define CROSSHAIR_TEXTURE_LOCATION "res/images/crosshair.png"
+
 //Blocks
 #define FAILED_TEXTURE_LOCATION "res/images/failed.png"
 #define GRASS_TEXTURE_LOCATION "res/images/grass.png"
 #define DIRT_TEXTURE_LOCATION "res/images/dirt.png"
+#define STONE_TEXTURE_LOCATION "res/images/stone.png"
 
 
 #endif

@@ -56,7 +56,11 @@ CubeGenerator::CubeGenerator()
 	};
 
 	mesh.createMesh(cubeVertices);
-	program = Program::get(VERTEX_SHADER, FRAGMENT_SHADER);
+	program = Program::get(BASIC_VERTEX_SHADER, BASIC_FRAGMENT_SHADER);
+}
+
+void CubeGenerator::setType(CubeGenerator::BlockType blockType) {
+	this->blockType = blockType;
 }
 
 void CubeGenerator::setTexture(std::shared_ptr<Texture> texture) {
@@ -75,12 +79,11 @@ void CubeGenerator::render(GLWindow& glWindow, const glm::mat4 viewMatrix) {
 	model = glm::translate(model, position);
 	model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
 
-	//Camera matrix
+	//View matrix
 	glm::mat4 view = viewMatrix;
 
 	//Projection
 	glm::mat4 projection = glm::perspective(glm::radians(45.f), (GLfloat)glWindow.getBufferWidth() / glWindow.getBufferHeight(), 0.1f, 100.f);
-
 
 	//Uniforms
 	program->setMat4("model", model);

@@ -16,7 +16,7 @@ class Camera {
 		void processKeyboard(bool* keys, GLfloat deltaTime);
 		void processMouseMovement(GLfloat xChange, GLfloat yChange);
 
-		glm::vec3 getPosition() { return position; }
+		const glm::vec3 getPosition() { return position; }
 		glm::mat4 calculateViewMatrix() { return glm::lookAt(position, position + front, up); };
 
 	private:
