@@ -11,6 +11,7 @@
 #include "FileLocations.h"
 
 #include <iostream>
+#include <memory>
 
 class Player {
 	public:
@@ -21,6 +22,8 @@ class Player {
 		void render(GLWindow& glWindow);
 
 		glm::mat4 getViewMatrix();
+
+		const glm::vec3 getPosition();
 
 	private:
 		GLfloat deltaTime;

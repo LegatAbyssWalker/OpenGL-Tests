@@ -34,11 +34,14 @@
     <Filter Include="Source Files\Mesh">
       <UniqueIdentifier>{605dd9b5-c92a-49de-a8c2-f4493228ba75}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Generators">
-      <UniqueIdentifier>{d40bebcf-36ff-4495-aee0-12c8bccf26ca}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Entities">
       <UniqueIdentifier>{ff506c44-721d-4718-9a97-54325c251a89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\World">
+      <UniqueIdentifier>{e331a682-6dc4-46dc-a79f-e8b1dcb5930a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\World\Generators">
+      <UniqueIdentifier>{d40bebcf-36ff-4495-aee0-12c8bccf26ca}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -70,13 +73,25 @@
       <Filter>Source Files\Mesh</Filter>
     </ClCompile>
     <ClCompile Include="CubeGenerator.cpp">
-      <Filter>Generators</Filter>
+      <Filter>Source Files\World\Generators</Filter>
     </ClCompile>
     <ClCompile Include="Program.cpp">
       <Filter>Source Files\Shaders</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="HeightGenerator.cpp">
+      <Filter>Source Files\World\Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="World.cpp">
+      <Filter>Source Files\World</Filter>
+    </ClCompile>
+    <ClCompile Include="FrustumCulling.cpp">
+      <Filter>Source Files\World</Filter>
+    </ClCompile>
+    <ClCompile Include="ChunkGenerator.cpp">
+      <Filter>Source Files\World\Generators</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -98,9 +113,6 @@
     <ClInclude Include="PlayingState.h">
       <Filter>Source Files\States\Game States</Filter>
     </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="Texture.h">
       <Filter>Source Files\Textures</Filter>
     </ClInclude>
@@ -108,7 +120,7 @@
       <Filter>Source Files\Mesh</Filter>
     </ClInclude>
     <ClInclude Include="CubeGenerator.h">
-      <Filter>Generators</Filter>
+      <Filter>Source Files\World\Generators</Filter>
     </ClInclude>
     <ClInclude Include="Program.h">
       <Filter>Source Files\Shaders</Filter>
@@ -119,12 +131,30 @@
     <ClInclude Include="Player.h">
       <Filter>Source Files\Entities</Filter>
     </ClInclude>
+    <ClInclude Include="Random.h">
+      <Filter>Source Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="HeightGenerator.h">
+      <Filter>Source Files\World\Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="World.h">
+      <Filter>Source Files\World</Filter>
+    </ClInclude>
+    <ClInclude Include="FrustumCulling.h">
+      <Filter>Source Files\World</Filter>
+    </ClInclude>
+    <ClInclude Include="ChunkGenerator.h">
+      <Filter>Source Files\World\Generators</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Shaders\shader.frag">
+    <None Include="Shaders\basicShader.frag">
       <Filter>Source Files\Shaders</Filter>
     </None>
-    <None Include="Shaders\shader.vert">
+    <None Include="Shaders\basicShader.vert">
       <Filter>Source Files\Shaders</Filter>
     </None>
   </ItemGroup>

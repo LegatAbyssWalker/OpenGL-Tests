@@ -8,11 +8,7 @@ PlayingState::PlayingState(StateMachine& machine, GLWindow& glWindow, bool repla
 
 
 	//Cube
-	cubeVector.resize(20);
-	for (GLsizei x = 0; x < cubeVector.size(); x++) {
-		cubeVector[x].setTexture(Texture::get(GRASS_TEXTURE_LOCATION));
-		cubeVector[x].setPosition(glm::vec3(x, 0.f, 0.f));
-	}
+	world = std::make_unique<World>();
 }
 
 void PlayingState::updateEvents() {
@@ -33,6 +29,10 @@ void PlayingState::update() {
 	/*-------------------------------------------------------------------------------------------------------------------*/
 	//Player updates
 	player->update(deltaTime);
+
+	/*-------------------------------------------------------------------------------------------------------------------*/
+	//World updates
+	world->update();
 }
 
 void PlayingState::render() {
@@ -40,7 +40,7 @@ void PlayingState::render() {
 	glClearColor(0.5f, 1.f, 1.f, 1.f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	for (auto& cube : cubeVector) { cube.render(glWindow, player->getViewMatrix()); }
+	world->render(glWindow, player->getViewMatrix());
 
 	player->render(glWindow);
 

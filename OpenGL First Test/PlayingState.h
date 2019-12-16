@@ -20,6 +20,7 @@ class StateMachine;
 #include "Texture.h"
 #include "CubeGenerator.h"
 #include "Player.h"
+#include "World.h"
 
 class PlayingState : public State {
 	public:
@@ -31,9 +32,10 @@ class PlayingState : public State {
 
 	private:
 		std::unique_ptr<Player> player = nullptr;
+		std::unique_ptr<World> world = nullptr;
 
-		//Vectors
-		std::vector<CubeGenerator> cubeVector;
+		//Variables and Booleans
+		GLboolean isPaused = false;
 
 		//Timing
 		GLfloat deltaTime = 0.f;

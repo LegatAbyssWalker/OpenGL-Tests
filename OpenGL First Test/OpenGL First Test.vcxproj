@@ -136,9 +136,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="ChunkGenerator.cpp" />
     <ClCompile Include="CubeGenerator.cpp" />
+    <ClCompile Include="FrustumCulling.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GLWindow.cpp" />
+    <ClCompile Include="HeightGenerator.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -147,25 +150,31 @@
     <ClCompile Include="State.cpp" />
     <ClCompile Include="StateMachine.cpp" />
     <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="ChunkGenerator.h" />
     <ClInclude Include="CubeGenerator.h" />
     <ClInclude Include="FileLocations.h" />
+    <ClInclude Include="FrustumCulling.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GLWindow.h" />
+    <ClInclude Include="HeightGenerator.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="MoreInfo.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayingState.h" />
     <ClInclude Include="Program.h" />
+    <ClInclude Include="Random.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="StateMachine.h" />
     <ClInclude Include="Texture.h" />
+    <ClInclude Include="World.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Shaders\shader.frag" />
-    <None Include="Shaders\shader.vert" />
+    <None Include="Shaders\basicShader.frag" />
+    <None Include="Shaders\basicShader.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

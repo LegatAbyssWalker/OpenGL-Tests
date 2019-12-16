@@ -9,6 +9,8 @@
 #include <memory>
 #include <unordered_map>
 
+#include "FileLocations.h"
+
 class Texture {
 	private:
 		static std::unordered_map<std::string, std::shared_ptr<Texture>> cache;
@@ -31,6 +33,7 @@ class Texture {
 
 	private:
 		GLuint textureID;
+		unsigned char* textureData;
 };
 
 #endif

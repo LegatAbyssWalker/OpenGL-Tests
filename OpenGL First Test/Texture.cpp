@@ -6,10 +6,14 @@ std::unordered_map<std::string, std::shared_ptr<Texture>> Texture::cache;
 
 Texture::Texture(const std::string& fileLocation) : textureID(0) {
 	GLint width, height, bitDepth;
-	unsigned char* textureData = stbi_load(fileLocation.c_str(), &width, &height, &bitDepth, 0);
+	
+	textureData = stbi_load(fileLocation.c_str(), &width, &height, &bitDepth, 0);
 
+	//If image fails to load, the `failed` image will appear 
 	if (textureData == 0) {
-		throw std::runtime_error("Failed to find " + fileLocation);
+		stbi_image_free(textureData);
+		const std::string failedFileLocation = FAILED_TEXTURE_LOCATION;
+		textureData = stbi_load(failedFileLocation.c_str(), &width, &height, &bitDepth, 0);
 	}
 
 	glGenTextures(1, &textureID);

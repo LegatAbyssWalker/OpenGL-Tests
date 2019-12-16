@@ -7,8 +7,6 @@
 #include <iostream>
 #include <memory>
 
-
-
 class GLWindow {
 	public:
 		GLWindow() = default;
