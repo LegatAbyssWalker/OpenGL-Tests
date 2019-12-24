@@ -5,6 +5,9 @@
 #include "CubeGenerator.h"
 #include "GLWindow.h"
 #include "HeightGenerator.h"
+#include "Random.h"
+#include "TreeGenerator.h"
+#include "Frustum.h"
 
 #include <iostream>
 #include <memory>
@@ -15,22 +18,28 @@
 class ChunkGenerator {
 	public:
 		ChunkGenerator() = default; 
-		ChunkGenerator(GLint chunkXPos);
+		ChunkGenerator(glm::vec3 chunkPos, GLuint treeAmount);
 
 		void update();
-		void render(GLWindow& glWindow, glm::mat4 viewMatrix);
+		void render(GLWindow& glWindow, glm::mat4 viewMatrix, glm::mat4 projection);
 
-		void addBlock(CubeGenerator::BlockType blockType, glm::vec3 position);
+		void addBlock(CubeGenerator::BlockType blockType, const char* textureLocation, glm::vec3 position);
 		void deleteBlock();
 
-		GLuint getCubeAmount() { return cubeVector.size(); }
-		GLuint getChunkSize() { return CHUNK_SIZE; }
-		
+		GLuint getCubeAmount() const { return cubeVector.size(); }
+
+		void createChunk();
+		void createTrees();
+
+
 	private:
-		const GLuint CHUNK_SIZE = 16;
+		std::array<Random<>, 3> random;
+		GLuint treeAmount;
+		glm::vec3 chunkPos;
 
 		std::unique_ptr<HeightGenerator> heightGenerator = nullptr; 
 		std::vector<std::unique_ptr<CubeGenerator>> cubeVector;
+		std::vector<std::unique_ptr<TreeGenerator>> treeVector;
 };
 
 #endif

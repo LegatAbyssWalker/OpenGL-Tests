@@ -5,8 +5,8 @@ CubeGenerator::CubeGenerator()
 	: mesh() {
 
 	std::vector<GLfloat> cubeVertices {
-		//   X   Y   Z   U     V  
-		//1
+		//    X   Y   Z   U     V  
+		//  1
 			-1, -1,  1, 0.25, 0.34,
 			-1, -1, -1, 0.25, 0.66,
 			-1,  1,  1, 0.00, 0.34,
@@ -14,7 +14,7 @@ CubeGenerator::CubeGenerator()
 			-1,  1, -1, 0.00, 0.66,
 			-1, -1, -1, 0.25, 0.66,
 
-		//2
+		//  2
 			-1, -1, -1, 0.25, 0.66,
 			-1, -1,  1, 0.25, 0.34,
 			 1, -1,  1, 0.50, 0.34,
@@ -22,7 +22,7 @@ CubeGenerator::CubeGenerator()
 			 1, -1, -1, 0.50, 0.66,
 			-1, -1, -1, 0.25, 0.66,
 
-		//3
+		//  3
 			-1,  1, -1, 0.25, 1.00,
 			-1, -1, -1, 0.25, 0.66,
 			 1, -1, -1, 0.50, 0.66,
@@ -30,7 +30,7 @@ CubeGenerator::CubeGenerator()
 			 1,  1, -1, 0.50, 1.00,
 			-1,  1, -1, 0.25, 1.00,
 
-		//4
+		//  4
 			-1,  1,  1, 0.25, 0.00,
 			-1, -1,  1, 0.25, 0.34,
 			 1, -1,  1, 0.50, 0.34,
@@ -38,7 +38,7 @@ CubeGenerator::CubeGenerator()
 			 1,  1,  1, 0.50, 0.00,
 			-1,  1,  1, 0.25, 0.00,
 
-		//5
+		//  5
 			 1, -1,  1, 0.50, 0.34,
 			 1, -1, -1, 0.50, 0.66,
 			 1,  1,  1, 0.75, 0.34,
@@ -46,7 +46,7 @@ CubeGenerator::CubeGenerator()
 			 1,  1, -1, 0.75, 0.66,
 			 1, -1, -1, 0.50, 0.66,
 
-		//6
+		//  6
 			-1,  1, -1, 1.00, 0.66,
 			-1,  1,  1, 1.00, 0.34,
 			 1,  1,  1, 0.75, 0.34,
@@ -56,7 +56,7 @@ CubeGenerator::CubeGenerator()
 	};
 
 	mesh.createMesh(cubeVertices);
-	program = Program::get(BASIC_VERTEX_SHADER, BASIC_FRAGMENT_SHADER);
+	program = Program::get(TERRAIN_VERTEX_SHADER, TERRAIN_FRAGMENT_SHADER);
 }
 
 void CubeGenerator::setType(CubeGenerator::BlockType blockType) {
@@ -71,32 +71,29 @@ void CubeGenerator::setPosition(glm::vec3 position) {
 	this->position = position;
 }
 
-void CubeGenerator::render(GLWindow& glWindow, const glm::mat4 viewMatrix) {
+void CubeGenerator::update() {
+	// ?
+}
+
+void CubeGenerator::render(GLWindow& glWindow, const glm::mat4 viewMatrix, const glm::mat4 projection) {
 	program->useProgram();
 
-	//Model matrix
+	// Model matrix
 	glm::mat4 model(1.f);
 	model = glm::translate(model, position);
 	model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
 
-	//View matrix
+	// View matrix
 	glm::mat4 view = viewMatrix;
 
-	//Projection
-	glm::mat4 projection = glm::perspective(glm::radians(45.f), (GLfloat)glWindow.getBufferWidth() / glWindow.getBufferHeight(), 0.1f, 100.f);
-
-	//Uniforms
+	// Uniforms
 	program->setMat4("model", model);
 	program->setMat4("view", view);
 	program->setMat4("projection", projection);
 
-	//Textures assignment
+	// Textures assignment
 	texture->useTexture();
 
-	//Rendering
+	// Rendering
 	mesh.renderMesh();
-}
-
-glm::vec3 CubeGenerator::getPosition() {
-	return glm::vec3(position);
 }

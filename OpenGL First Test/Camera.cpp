@@ -12,17 +12,17 @@ Camera::Camera(glm::vec3 position, glm::vec3 up, GLfloat yaw, GLfloat pitch, GLf
 void Camera::processKeyboard(bool* keys, GLfloat deltaTime) {
 	GLfloat velocity = movementSpeed * deltaTime;
 	
-	//WASD
+	// WASD
 	if (keys[GLFW_KEY_W]) { position += front * velocity; }
 	if (keys[GLFW_KEY_A]) { position -= right * velocity; }
 	if (keys[GLFW_KEY_S]) { position -= front * velocity; }
 	if (keys[GLFW_KEY_D]) { position += right * velocity; }
 
-	//SHIFT/SPACE
+	// SHIFT/SPACE
 	if (keys[GLFW_KEY_LEFT_SHIFT]) { position -= up * velocity; }
 	if (keys[GLFW_KEY_SPACE])      { position += up * velocity; }
 
-	//W and F
+	// W and F
 	if (keys[GLFW_KEY_W] && keys[GLFW_KEY_F]) { position += front * (velocity + velocity); }
 }
 
@@ -33,7 +33,7 @@ void Camera::processMouseMovement(GLfloat xChange, GLfloat yChange) {
 	yaw += xChange; 
 	pitch += yChange; 
 
-	//Make sure that when the pitch is out of bounds, the screen does not flip
+	// Make sure that when the pitch is out of bounds, the screen does not flip
 	if (pitch > 89.f) {
 		pitch = 89.f;
 	}
@@ -41,7 +41,7 @@ void Camera::processMouseMovement(GLfloat xChange, GLfloat yChange) {
 		pitch = -89.f;
 	}
 
-	//Update front, right, and up vectors when updating euler angles
+	// Update front, right, and up vectors when updating euler angles
 	updateCameraVectors();
 }
 

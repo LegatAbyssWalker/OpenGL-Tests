@@ -16,7 +16,9 @@ class CubeGenerator {
 		enum BlockType {
 			Grass_Block = 0,
 			Dirt_Block = 1,
-			Stone_Block = 2
+			Stone_Block = 2,
+			Leaf_Block = 3,
+			Log_Block = 4
 		};
 
 		CubeGenerator();
@@ -25,10 +27,14 @@ class CubeGenerator {
 		void setTexture(std::shared_ptr<Texture> texture);
 		void setPosition(glm::vec3 position = glm::vec3(0.f, 0.f, 0.f));
 
-		void render(GLWindow& glWindow, const glm::mat4 viewMatrix);
+		void update();
+		void render(GLWindow& glWindow, const glm::mat4 viewMatrix, const glm::mat4 projection);
 
-		glm::vec3 getPosition();
-		CubeGenerator::BlockType getBlockType() { return blockType; }
+		CubeGenerator::BlockType getBlockType() const { return blockType; }
+		glm::vec3 getPosition() const { return glm::vec3(position); }
+		
+		glm::vec3 getP0() const { return getPosition() - glm::vec3(0.5f, 0.5f, 0.5f); }
+		glm::vec3 getP1() const { return getPosition() + glm::vec3(0.5f, 0.5f, 0.5f); }
 
 	private:
 		CubeGenerator::BlockType blockType;

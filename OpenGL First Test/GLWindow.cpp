@@ -6,7 +6,7 @@ GLWindow::GLWindow(const GLuint screenWidth, const GLuint screenHeight, const ch
 	
 	for (std::size_t x = 0; x < 1024; x++) { keys[x] = 0; }
 
-	//VSync
+	// VSync
 	glfwSwapInterval(1);
 }
 
@@ -16,22 +16,22 @@ GLWindow::~GLWindow() {
 }
 
 void GLWindow::initWindow() {
-	//Initialize GLFW
+	// Initialize GLFW
 	if (glfwInit() != GLFW_TRUE) {
 		std::cout << "GLFW init failed\n";
 		glfwTerminate();
 	}
 
 
-	//Setup GLFW window properties 
-	//OpenGL version
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4); //Large version
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 4); //Small version 
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); //Detects any old OpenGL code, this will throw an error
-	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); //Allows forward compatibility (between differnt OS) 
+	// Setup GLFW window properties 
+	// OpenGL version
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4); // Large version
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 4); // Small version 
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); // Detects any old OpenGL code, this will throw an error
+	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // Allows forward compatibility (between differnt OS) 
 
 
-	//Creating window
+	// Creating window
 	window = glfwCreateWindow(screenWidth, screenHeight, windowTitle, nullptr, nullptr);
 	glfwSetWindowPos(window, 10, 50);
 
@@ -40,18 +40,18 @@ void GLWindow::initWindow() {
 		glfwTerminate();
 	}
 
-	//Get buffer size information
+	// Get buffer size information
 	glfwGetFramebufferSize(window, &bufferWidth, &bufferHeight);
 
-	//Set context for GLEW to use (can change between which window)
+	// Set context for GLEW to use (can change between which window)
 	glfwMakeContextCurrent(window);
 
-	//Mouse + Keyboard inputs
+	// Mouse + Keyboard inputs
 	glfwSetWindowUserPointer(window, this);
 	createCallBacks();
 	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
-	//Allow modern extension features
+	// Allow modern extension features
 	glewExperimental = GL_TRUE;
 
 
@@ -64,7 +64,7 @@ void GLWindow::initWindow() {
 
 	glEnable(GL_DEPTH_TEST);
 
-	//Setup viewport size
+	// Setup viewport size
 	glViewport(0, 0, bufferWidth, bufferHeight);
 }
 
@@ -72,12 +72,16 @@ GLfloat GLWindow::getXChange() {
 	GLfloat changedX = xChange;
 	xChange = 0.f;
 	return changedX;
+
+	mousePosition.x = changedX;
 }
 
 GLfloat GLWindow::getYChange() {
 	GLfloat changedY = yChange;
 	yChange = 0.f;
 	return changedY;
+
+	mousePosition.x = changedY;
 }
 
 void GLWindow::createCallBacks() {
@@ -109,11 +113,11 @@ void GLWindow::processMouse(GLFWwindow* window, GLdouble xPos, GLdouble yPos) {
 		glWindow.mouseFirstMoved = false;
 	}
 
-	//Finds last coordinates
+	// Finds last coordinates
 	glWindow.xChange += xPos - glWindow.lastX;
 	glWindow.yChange += glWindow.lastY - yPos;
 
-	//Updates current coordinates
+	// Updates current coordinates
 	glWindow.lastX = xPos;
 	glWindow.lastY = yPos;
 }

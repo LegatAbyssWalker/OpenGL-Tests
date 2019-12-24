@@ -21,6 +21,7 @@ class StateMachine;
 #include "CubeGenerator.h"
 #include "Player.h"
 #include "World.h"
+#include "RayCasting.h"
 
 class PlayingState : public State {
 	public:
@@ -31,13 +32,13 @@ class PlayingState : public State {
 		void render();
 
 	private:
-		std::unique_ptr<Player> player = nullptr;
 		std::unique_ptr<World> world = nullptr;
+		std::unique_ptr<Player> player = nullptr;
 
-		//Variables and Booleans
+		// Variables and Booleans
 		GLboolean isPaused = false;
 
-		//Timing
+		// Timing
 		GLfloat deltaTime = 0.f;
 		GLfloat lastFrame;
 };

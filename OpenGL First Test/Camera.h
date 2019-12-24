@@ -26,8 +26,8 @@ class Camera {
 		glm::vec3 right;
 		glm::vec3 worldUp;
 
-		GLfloat yaw; //Left and right (X-Axis)
-		GLfloat pitch; //Up and down (Y-Axis)
+		GLfloat yaw; // Left and right (X-Axis)
+		GLfloat pitch; // Up and down (Y-Axis)
 
 		GLfloat movementSpeed;
 		GLfloat mouseSensitivity;

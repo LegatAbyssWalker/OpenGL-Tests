@@ -3,6 +3,7 @@
 
 #include "GL/glew.h"
 #include "GLFW/glfw3.h"
+#include "glm/glm.hpp"
 
 #include <iostream>
 #include <memory>
@@ -21,12 +22,16 @@ class GLWindow {
 		bool getShouldClose() { return glfwWindowShouldClose(window); }
 		bool* getKeys() { return keys; }
 
+		glm::vec2 getMousePosition() { return mousePosition; }
+
 		GLfloat getXChange();
 		GLfloat getYChange();
 
 		void swapBuffers() { glfwSwapBuffers(window); }
 
 	private:
+		glm::vec2 mousePosition;
+
 		GLFWwindow* window;
 
 		const char* windowTitle;
@@ -40,7 +45,6 @@ class GLWindow {
 		GLfloat xChange;
 		GLfloat yChange;
 		bool mouseFirstMoved;
-
 		
 		void createCallBacks();
 		static void processKeyboard(GLFWwindow* window, GLint key, GLint code, GLint action, GLint mode);

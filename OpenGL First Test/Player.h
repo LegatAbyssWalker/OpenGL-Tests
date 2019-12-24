@@ -9,21 +9,22 @@
 #include "Mesh.h"
 #include "Texture.h"
 #include "FileLocations.h"
+#include "RayCasting.h"
 
 #include <iostream>
 #include <memory>
 
 class Player {
 	public:
-		Player(glm::vec3 position);
+		Player(GLWindow& glWindow, glm::vec3 position, glm::mat4 projection);
 
 		void updateEvents(GLWindow& glWindow);
 		void update(GLfloat deltaTime);
-		void render(GLWindow& glWindow);
+		void render();
 
-		glm::mat4 getViewMatrix();
-
-		const glm::vec3 getPosition();
+		glm::mat4 getViewMatrix() { return camera.calculateViewMatrix(); }
+		const glm::vec3 getPosition() { return camera.getPosition(); }
+		glm::vec3 getRayCast() { return rayCast.getCurrentRay(); }
 
 	private:
 		GLfloat deltaTime;
@@ -32,6 +33,8 @@ class Player {
 		GLfloat lastX = SCREEN_WIDTH / 2.f;
 		GLfloat lastY = SCREEN_HEIGHT / 2.f;
 		bool firstMouse = true;
+
+		RayCasting rayCast;
 
 		Mesh mesh;
 		std::shared_ptr<Program> program;
